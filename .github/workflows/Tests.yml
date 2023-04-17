@@ -19,10 +19,7 @@ jobs:
           java-version: 11
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: chmod +x ./gradlew build
 
       - name: Run unit tests
         run: ./gradlew SumCalculatorTestSum
-        
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
