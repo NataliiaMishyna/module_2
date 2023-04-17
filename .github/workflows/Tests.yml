@@ -1,9 +1,10 @@
 name: Build and tests
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -18,8 +19,11 @@ jobs:
         with:
           java-version: 11
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: Build with Gradle
-        run: chmod +x ./gradlew build
+        run: ./gradlew build
 
       - name: Run unit tests
         run: ./gradlew SumCalculatorTestSum
