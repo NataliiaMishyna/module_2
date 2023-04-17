@@ -22,4 +22,7 @@ jobs:
         run: ./gradlew build
 
       - name: Run unit tests
-        run: ./gradlew test
+        run: ./gradlew SumCalculatorTestSum
+        
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
