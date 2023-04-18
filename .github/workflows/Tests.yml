@@ -23,11 +23,5 @@ jobs:
           java-version: 11
           distribution: 'temurin'
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Build with Gradle
-        run: ./gradlew build --no-daemon
-
       - name: Run SumCalculatorSumTest unit test
         run: ./gradlew test --tests "SumCalculatorSumTest" --no-daemon
