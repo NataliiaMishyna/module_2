@@ -1,9 +1,13 @@
 name: Build and tests
 
 on:
+  push:
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -17,9 +21,13 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 11
+          distribution: 'temurin'
 
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Run unit tests
-        run: ./gradlew test
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
+
+      - name: Run SumCalculatorSumTest unit test
+        run: ./gradlew test --tests "SumCalculatorSumTest" --no-daemon
